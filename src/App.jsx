@@ -13,6 +13,7 @@ function App() {
   const [isUseToast, setIsUseToast] = useState(false);
   const [isTailwindClicked, setIsTailwindClicked] = useState(false);
   const tailwindRef = useRef(null);
+  const daisyRef = useRef(null);
 
   function copyToClipboard(id, btnId) {
     const textToCopy = document.getElementById(id).innerText;
@@ -107,6 +108,12 @@ function App() {
                 onClick={() => {
                   setIsUseTailwind(!isUseTailwind);
                   setIsTailwindClicked(!isUseTailwind);
+                  if (isUseTailwind) {
+                    setIsUseTailwind(false);
+                    daisyRef.current.checked = false;
+                    setIsTailwindClicked(false);
+                    setIsUseDaisy(false);
+                  }
                 }}
                 type="checkbox"
                 id="tailwind-option"
@@ -132,6 +139,7 @@ function App() {
             </li>
             <li>
               <input
+                ref={daisyRef}
                 onClick={() => {
                   setIsUseDaisy(!isUseDaisy);
                   if (!isUseDaisy) {
@@ -389,39 +397,6 @@ function App() {
                     className="flex-none min-w-full p-5"
                     id="tailwind-config"
                   >
-                    <span className="token block">
-                      <span className="token doc-comment comment">/** </span>
-                      <span className="token doc-comment comment keyword">
-                        @type
-                      </span>
-                      <span className="token doc-comment comment"> </span>
-                      <span className="token doc-comment comment  className-name punctuation">
-                        &#123;
-                      </span>
-                      <span className="token doc-comment comment  className-name keyword">
-                        import
-                      </span>
-                      <span className="token doc-comment comment  className-name punctuation">
-                        (
-                      </span>
-                      <span className="token doc-comment comment  className-name string">
-                        &apos;tailwindcss&apos;
-                      </span>
-                      <span className="token doc-comment comment  className-name punctuation">
-                        )
-                      </span>
-                      <span className="token doc-comment comment  className-name punctuation">
-                        .
-                      </span>
-                      <span className="token doc-comment comment  className-name">
-                        Config
-                      </span>
-                      <span className="token doc-comment comment  className-name punctuation">
-                        &#125;
-                      </span>
-                      <span className="token doc-comment comment"> */</span>
-                      <span className="token plain"></span>
-                    </span>
                     <span className="token block">
                       <span className="token plain"></span>
                       <span className="token keyword module">export</span>
