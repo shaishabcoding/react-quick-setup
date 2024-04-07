@@ -5,12 +5,13 @@ import { FaGithub } from "react-icons/fa";
 
 function App() {
   const [projectName, setProjectName] = useState(".");
-  const [isUseTailwind, setIsUseTailwind] = useState(false);
+  const [isUseTailwind, setIsUseTailwind] = useState(true);
   const [isUseRouter, setIsUseRouter] = useState(false);
   const [isUseFirebase, setIsUseFirebase] = useState(false);
-  const [isUseDaisy, setIsUseDaisy] = useState(false);
+  const [isUseDaisy, setIsUseDaisy] = useState(true);
   const [isUseIcons, setIsUseIcons] = useState(false);
   const [isUseToast, setIsUseToast] = useState(false);
+  const [isUseHookForm, setIsUseHookForm] = useState(false);
   const [isTailwindClicked, setIsTailwindClicked] = useState(false);
   const tailwindRef = useRef(null);
   const daisyRef = useRef(null);
@@ -46,18 +47,18 @@ function App() {
           <FaGithub />
         </a>
       </div>
-      <p className="text-4xl lg:text-6xl font-mono text-orange-400 lg:mx-20 my-6 lg:my-12 text-center">
-        React Setup Essentials
+      <p className="text-4xl lg:text-6xl font-mono text-sky-400 lg:mx-20 my-6 lg:my-12 text-center select-none">
+        React Quick Setup
       </p>
 
       {/* input box */}
-      <p className="mt-10 font-mono font-bold text-orange-400">
+      <p className="mt-10 font-mono font-bold text-sky-400 select-none">
         Enter Your Project Name
       </p>
       <div className="lg:mx-[450px] mt-5 flex">
         <form
           onChange={(e) =>
-            setProjectName(packageNameCorrector(e.target.value) || ".")
+            setProjectName(packageNameCorrector(e.target.value.trim()) || ".")
           }
           className="flex flex-col lg:flex-row justify-center lg:justify-start gap-4 lg:gap-10 w-full"
         >
@@ -74,7 +75,7 @@ function App() {
       </div>
 
       {/* command */}
-      <div className="my-10">
+      <div className="my-10 select-none">
         <form>
           <ul className="grid w-full gap-6 grid-cols-2 md:grid-cols-6">
             <li>
@@ -82,18 +83,17 @@ function App() {
                 onClick={() => setIsUseRouter(!isUseRouter)}
                 type="checkbox"
                 id="router-option"
-                value=""
+                checked={isUseRouter}
                 className="hidden peer"
-                required=""
               ></input>
               <label
                 htmlFor="router-option"
-                className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+                className="inline-flex items-center justify-between w-full p-5 text-pink-500 bg-white border-2 border-pink-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-pink-700 peer-checked:border-black peer-checked:saturate-0 peer-checked:bg-gray-100 peer-checked:text-black hover:text-pink-600 dark:peer-checked:text-pink-300 hover:bg-pink-50 dark:text-pink-400 dark:bg-pink-800 dark:hover:bg-pink-700"
               >
                 <div className="flex flex-col gap-2 items-center justify-center w-full">
                   <img
                     className="w-7 h-7"
-                    src="react-router-svgrepo-com.svg"
+                    src="react-router.svg"
                     alt="router"
                   />
                   <div className="w-full text-lg font-semibold font-mono">
@@ -117,19 +117,18 @@ function App() {
                 }}
                 type="checkbox"
                 id="tailwind-option"
-                value=""
+                checked={isUseTailwind}
                 className="hidden peer"
-                required=""
               ></input>
               <label
                 htmlFor="tailwind-option"
-                className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+                className="inline-flex items-center justify-between w-full p-5 text-sky-500 bg-white border-2 border-sky-200 rounded-lg cursor-pointer dark:hover:text-sky-300 dark:border-sky-700 peer-checked:border-black peer-checked:bg-gray-100 peer-checked:text-black hover:text-sky-600 dark:peer-checked:text-sky-300 hover:bg-sky-50 dark:text-sky-400 dark:bg-sky-800 dark:hover:bg-sky-700 peer-checked:saturate-0"
               >
                 <div className="flex flex-col gap-2 items-center justify-center w-full">
                   <img
                     className="w-7 h-7"
-                    src="tailwind-css-icon.svg"
-                    alt="tailwindcss"
+                    src="tailwind.svg"
+                    alt="tailwind-css"
                   />
                   <div className="w-full text-lg font-semibold font-mono">
                     Tailwind
@@ -154,16 +153,15 @@ function App() {
                 }}
                 type="checkbox"
                 id="react-option"
-                value=""
+                checked={isUseDaisy}
                 className="hidden peer"
-                required=""
               ></input>
               <label
                 htmlFor="react-option"
-                className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+                className="inline-flex items-center justify-between w-full p-5 text-amber-500 bg-white border-2 border-amber-200 rounded-lg cursor-pointer dark:hover:text-amber-300 dark:border-amber-700 peer-checked:border-black peer-checked:bg-gray-100 peer-checked:text-black hover:text-amber-600 dark:peer-checked:text-amber-300 hover:bg-amber-50 dark:text-amber-400 dark:bg-amber-800 dark:hover:bg-amber-700 peer-checked:saturate-0"
               >
                 <div className="flex flex-col gap-2 items-center justify-center w-full">
-                  <img className="w-7 h-7" src="daisyui.png" alt="" />
+                  <img className="w-7 h-7" src="daisy.png" alt="" />
                   <div className="w-full text-lg font-semibold font-mono">
                     DaisyUi
                   </div>
@@ -174,13 +172,13 @@ function App() {
               <input
                 onClick={() => setIsUseFirebase(!isUseFirebase)}
                 type="checkbox"
-                id="flowbite-option"
-                value=""
+                id="firebase-option"
+                checked={isUseFirebase}
                 className="hidden peer"
               ></input>
               <label
-                htmlFor="flowbite-option"
-                className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+                htmlFor="firebase-option"
+                className="inline-flex items-center justify-between w-full p-5 text-orange-500 bg-white border-2 border-orange-200 rounded-lg cursor-pointer dark:hover:text-orange-300 dark:border-orange-700 peer-checked:border-black peer-checked:bg-gray-100 peer-checked:text-black hover:text-orange-600 dark:peer-checked:text-orange-300 hover:bg-orange-50 dark:text-orange-400 dark:bg-orange-800 dark:hover:bg-orange-700 peer-checked:saturate-0"
               >
                 <div className="flex flex-col gap-2 items-center justify-center w-full">
                   <img
@@ -198,13 +196,13 @@ function App() {
               <input
                 onClick={() => setIsUseToast(!isUseToast)}
                 type="checkbox"
-                id="angular-option"
-                value=""
+                id="toast-option"
+                checked={isUseToast}
                 className="hidden peer"
               ></input>
               <label
-                htmlFor="angular-option"
-                className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+                htmlFor="toast-option"
+                className="inline-flex items-center justify-between w-full p-5 text-teal-500 bg-white border-2 border-teal-200 rounded-lg cursor-pointer dark:hover:text-teal-300 dark:border-teal-700 peer-checked:border-black peer-checked:bg-gray-100 peer-checked:text-black hover:text-teal-600 dark:peer-checked:text-teal-300 hover:bg-teal-50 dark:text-teal-400 dark:bg-teal-800 dark:hover:bg-teal-700 peer-checked:saturate-0"
               >
                 <div className="flex flex-col gap-2 items-center justify-center w-full">
                   <img
@@ -224,18 +222,18 @@ function App() {
                 onClick={() => setIsUseIcons(!isUseIcons)}
                 type="checkbox"
                 id="reactIcons-option"
-                value=""
+                checked={isUseIcons}
                 className="hidden peer"
               ></input>
               <label
                 htmlFor="reactIcons-option"
-                className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+                className="inline-flex items-center justify-between w-full p-5 text-pink-500 bg-white border-2 border-pink-200 rounded-lg cursor-pointer dark:hover:text-pink-300 dark:border-pink-700 peer-checked:border-black peer-checked:bg-gray-100 peer-checked:text-black hover:text-pink-600 dark:peer-checked:text-pink-300 hover:bg-pink-50 dark:text-pink-400 dark:bg-pink-800 dark:hover:bg-pink-700 peer-checked:saturate-0"
               >
                 <div className="flex flex-col gap-2 items-center justify-center w-full">
                   <img
                     width="28"
                     height="28"
-                    src="react-svgrepo-com.svg"
+                    src="react-icons.png"
                     alt="react-icons"
                   />
                   <div className="w-full text-lg font-semibold font-mono">
@@ -244,11 +242,36 @@ function App() {
                 </div>
               </label>
             </li>
+            <li>
+              <input
+                onClick={() => setIsUseHookForm(!isUseHookForm)}
+                type="checkbox"
+                id="hookForm-option"
+                value=""
+                className="hidden peer"
+              ></input>
+              <label
+                htmlFor="hookForm-option"
+                className="inline-flex items-center justify-between w-full p-5 text-green-500 bg-white border-2 border-green-200 rounded-lg cursor-pointer dark:hover:text-green-300 dark:border-green-700 peer-checked:border-black peer-checked:bg-gray-100 peer-checked:text-black hover:text-green-600 dark:peer-checked:text-green-300 hover:bg-green-50 dark:text-green-400 dark:bg-green-800 dark:hover:bg-green-700 peer-checked:saturate-0"
+              >
+                <div className="flex flex-col gap-2 items-center justify-center w-full">
+                  <img
+                    width="28"
+                    height="28"
+                    src="react-hook-form.png"
+                    alt="react-icons"
+                  />
+                  <div className="w-full text-lg font-semibold font-mono">
+                    Hook Form
+                  </div>
+                </div>
+              </label>
+            </li>
           </ul>
         </form>
       </div>
       <div className="my-10">
-        <h1 className="font-bold text-2xl text-center w-full font-mono text-orange-400">
+        <h1 className="font-bold text-2xl text-center w-full font-mono text-sky-400">
           NPM Packages
         </h1>
         <p className="font-mono font-medium mb-10">
@@ -302,7 +325,7 @@ function App() {
               <>
                 <pre data-prefix="3" className="">
                   <code className="text-balance">
-                    npm install -D tailwindcss postcss autoprefixer
+                    npm i -D tailwindcss postcss autoprefixer
                   </code>
                 </pre>
                 <pre data-prefix="4" className="">
@@ -318,25 +341,28 @@ function App() {
             {isUseRouter && (
               <pre data-prefix="6" className="">
                 <code className="text-balance">
-                  npm install react-router-dom localforage match-sorter sort-by
+                  npm i react-router-dom localforage match-sorter sort-by
                 </code>
               </pre>
             )}
             {isUseFirebase && (
               <pre data-prefix="7" className="">
-                <code className="text-balance">npm install firebase</code>
+                <code className="text-balance">npm i firebase</code>
               </pre>
             )}
             {isUseIcons && (
               <pre data-prefix="8" className="">
-                <code className="text-balance">
-                  npm install react-icons --save
-                </code>
+                <code className="text-balance">npm i react-icons</code>
               </pre>
             )}
             {isUseToast && (
               <pre data-prefix="9" className="">
                 <code className="text-balance">npm i react-toastify</code>
+              </pre>
+            )}
+            {isUseHookForm && (
+              <pre data-prefix="9" className="">
+                <code className="text-balance">npm i react-hook-form</code>
               </pre>
             )}
           </div>
@@ -347,7 +373,7 @@ function App() {
       {isUseTailwind && (
         <>
           <div className="lg:mx-[300px]">
-            <h1 className="font-bold text-2xl text-center w-full font-mono text-orange-400">
+            <h1 className="font-bold text-2xl text-center w-full font-mono text-sky-400">
               Tailwind Configuration
             </h1>
             <p className="font-mono font-medium">
@@ -506,7 +532,7 @@ function App() {
           {/* index.css */}
           <div className="lg:mx-[300px] my-10">
             <div className="my-10">
-              <h1 className="font-bold text-2xl text-center w-full font-mono text-orange-400">
+              <h1 className="font-bold text-2xl text-center w-full font-mono text-sky-400">
                 Integrate Tailwind Directives
               </h1>
               <p className="font-mono font-medium">
@@ -580,7 +606,7 @@ function App() {
         <>
           {" "}
           <div className="my-10">
-            <h1 className="font-bold text-2xl text-center w-full font-mono text-orange-400">
+            <h1 className="font-bold text-2xl text-center w-full font-mono text-sky-400">
               React Router Integration
             </h1>
             <p className="font-mono font-medium">
