@@ -325,7 +325,7 @@ function App() {
               <>
                 <pre data-prefix="3" className="">
                   <code className="text-balance">
-                    npm i -D tailwindcss postcss autoprefixer
+                    pnpm add -D tailwindcss postcss autoprefixer
                   </code>
                 </pre>
                 <pre data-prefix="4" className="">
@@ -335,34 +335,34 @@ function App() {
             )}
             {isUseDaisy && (
               <pre data-prefix="5" className="">
-                <code className="text-balance">npm i -D daisyui@latest</code>
+                <code className="text-balance">pnpm add -D daisyui@latest</code>
               </pre>
             )}
             {isUseRouter && (
               <pre data-prefix="6" className="">
                 <code className="text-balance">
-                  npm i react-router-dom localforage match-sorter sort-by
+                  pnpm add react-router-dom localforage match-sorter sort-by
                 </code>
               </pre>
             )}
             {isUseFirebase && (
               <pre data-prefix="7" className="">
-                <code className="text-balance">npm i firebase</code>
+                <code className="text-balance">pnpm add firebase</code>
               </pre>
             )}
             {isUseIcons && (
               <pre data-prefix="8" className="">
-                <code className="text-balance">npm i react-icons</code>
+                <code className="text-balance">pnpm add react-icons</code>
               </pre>
             )}
             {isUseToast && (
               <pre data-prefix="9" className="">
-                <code className="text-balance">npm i react-toastify</code>
+                <code className="text-balance">pnpm add react-toastify</code>
               </pre>
             )}
             {isUseHookForm && (
               <pre data-prefix="9" className="">
-                <code className="text-balance">npm i react-hook-form</code>
+                <code className="text-balance">pnpm add react-hook-form</code>
               </pre>
             )}
           </div>
